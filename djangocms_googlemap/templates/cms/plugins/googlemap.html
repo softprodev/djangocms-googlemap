@@ -1,8 +1,12 @@
 {% load i18n sekizai_tags %}
 
 {% addtoblock "js" %}
+  <script type="text/javascript" src="https://maps-api-ssl.google.com/maps/api/js?v=3&amp;sensor=true"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
   <script type="text/javascript">
-function initializeMap{{ object.pk}}() {
+    (function () {
       // save settings form plugin
       var container = 'google-map-{{ object.pk }}';
       var latlng = new google.maps.LatLng(46.94708, 7.445975); // default to switzerland
@@ -19,7 +23,7 @@ function initializeMap{{ object.pk}}() {
         keyboardShortcuts: {{ object.keyboard_shortcuts|lower}},
         panControl: {{ object.pan_control|lower}},
         zoomControl: {{ object.zoom_control|lower}},
-        streetViewControl: {{ object.street_view_control|lower}},
+        streetViewControl: {{ object.street_view_control|lower}}
       };
 
       {% if object.get_lat_lng %}
@@ -61,15 +65,9 @@ function initializeMap{{ object.pk}}() {
         infowindow.open(map, marker);
         {% endif %}
       }
-    };
+    })();
   </script>
 {% endaddtoblock %}
-
-{% addtoblock "js" %}
-<script type="text/javascript" src="https://maps-api-ssl.google.com/maps/api/js?v=3&amp;sensor=true&amp;callback=initializeMap{{ object.pk }}"></script>
-{% endaddtoblock %}
-
-
 
 <div class="plugin_googlemap">
   {% if object.get_title %}<h2>{{ object.get_title }}</h2>{% endif %}
