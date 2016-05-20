@@ -24,9 +24,6 @@ class GoogleMap(CMSPlugin):
         _("additional content"), max_length=255, blank=True,
         help_text=_('Displayed under address in the bubble.'))
 
-    style = models.TextField(_("custom map style"), blank=True,
-                             help_text=_('Use javascript as in'))
-
     ZOOM_LEVELS = map(lambda c: (c, str(c)), range(22))
     zoom = models.PositiveSmallIntegerField(
         _("zoom level"), choices=ZOOM_LEVELS, default=13)
@@ -39,10 +36,10 @@ class GoogleMap(CMSPlugin):
         _('longitude'), max_digits=10, decimal_places=6, null=True, blank=True)
 
     route_planer_title = models.CharField(
-        _("route planer title"), max_length=150, blank=True, null=True,
+        _("route planner title"), max_length=150, blank=True, null=True,
         default=_('Calculate your fastest way to here'))
 
-    route_planer = models.BooleanField(_("route planer"), default=False)
+    route_planer = models.BooleanField(_("route planner"), default=False)
 
     width = models.CharField(
         _('width'), max_length=6, default='100%',
