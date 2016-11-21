@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-from djangocms_googlemap.models import get_templates
 
 
 class Migration(migrations.Migration):
@@ -35,7 +34,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='googlemap',
             name='template',
-            field=models.CharField(default=get_templates()[0][0], max_length=255, verbose_name='Template', choices=get_templates()),
+            field=models.CharField(default='default', max_length=255, verbose_name='Template', choices=[('default', 'Default')]),
         ),
         migrations.AlterField(
             model_name='googlemap',

@@ -3,15 +3,6 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
-==================
-* Prevent changes to ``DJANGOCMS_GOOGLEMAP_XXX`` settings from requiring new
-  migrations
-* Changed naming of ``Aldryn`` to ``Divio Cloud``
-* Adapted testing infrastructure (tox/travis) to incorporate
-  django CMS 3.4 and dropped 3.2
-
-
 1.0.0 (2016-11-14)
 ==================
 
